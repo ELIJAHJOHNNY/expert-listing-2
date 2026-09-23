@@ -19,6 +19,7 @@ export function ComposerInput({ placeholder }: { placeholder: string }) {
     >
       <input
         aria-label="Create a post"
+        className="text-base min-[600px]:text-[11px]"
         onChange={(event) => setValue(event.target.value)}
         placeholder={placeholder}
         value={value}
