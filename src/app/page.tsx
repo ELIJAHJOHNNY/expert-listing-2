@@ -27,7 +27,7 @@ const sidebarIcons = {
 export default function Home() {
   const [active, setActive] = useState("Feed");
   return (
-    <main className="mx-auto overflow-x-clip min-[600px]:p-6 min-[900px]:grid min-[900px]:max-w-[1500px] min-[900px]:grid-cols-[230px_minmax(0,1fr)] min-[900px]:gap-[30px] min-[900px]:px-10 min-[900px]:py-7 min-[1200px]:gap-[42px] min-[1200px]:px-[7vw]">
+    <main className="mx-auto overflow-x-clip min-[600px]:p-6 min-[900px]:grid min-[900px]:max-w-[1500px] min-[900px]:grid-cols-[230px_minmax(0,1fr)] min-[900px]:gap-[10px] min-[900px]:px-10 min-[900px]:py-7 min-[1200px]:gap-[22px] min-[1200px]:px-[7vw]">
       <aside className="sticky top-7 hidden h-[calc(100vh-56px)] flex-col rounded-[18px] bg-[#154d3f] px-4 py-[25px] text-[#eaf3ec] min-[900px]:flex min-[1200px]:px-[18px] min-[1200px]:py-[30px] [&_nav]:grid [&_nav]:gap-1.5 [&_nav_button]:flex [&_nav_button]:items-center [&_nav_button]:gap-[11px] [&_nav_button]:rounded-[9px] [&_nav_button]:px-2.5 [&_nav_button]:py-[11px] [&_nav_button]:text-left [&_nav_button]:text-[13px] [&_nav_button]:text-[#b9cfc5] [&_nav_button:hover]:bg-[#276554] [&_nav_button:hover]:text-white">
         <Logo
           aria-label="Expert Listing"
