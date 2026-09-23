@@ -9,7 +9,16 @@ import shareIcon from "@/assets/svgs/share.svg";
 import bookmarkIcon from "@/assets/svgs/Bookmark.svg";
 export function FeedPost({ post }: { post: Post }) {
   const [liked, setLiked] = useState(false),
-    [saved, setSaved] = useState(false);
+    [saved, setSaved] = useState(false),
+    [likeBurst, setLikeBurst] = useState(false);
+
+  function handleLike() {
+    const nextLiked = !liked;
+    setLiked(nextLiked);
+    if (!nextLiked) return;
+    setLikeBurst(true);
+    window.setTimeout(() => setLikeBurst(false), 500);
+  }
   return (
     <article className="border-b-[3px] border-[#f1f1f1] px-[13px] pt-[11px] pb-2.5">
       <header className="flex items-center gap-[7px] [&>img]:size-[34px] [&>img]:shrink-0 [&>img]:rounded-full [&>img]:object-cover [&>div]:flex-1 [&>div]:leading-[13px] [&_b]:text-[11px] [&_small]:text-[9px] [&_small]:text-[#999] [&_p]:m-0 [&_p]:text-[9px] [&_p]:text-[#999]">
@@ -44,17 +53,26 @@ export function FeedPost({ post }: { post: Post }) {
       )}
       <div className="flex h-[31px] items-center gap-[11px] text-[10px] text-[#777] [&>button]:inline-flex [&>button]:items-center [&>button]:gap-[3px] [&>button]:bg-transparent [&>button]:p-0 [&>button]:text-[12px] [&>button]:text-[#6c7070] [&_img]:size-[15px] [&_img]:object-contain [&>span]:mr-auto motion-safe:[&>button:hover]:scale-110">
         <button
-          onClick={() => setLiked(!liked)}
+          onClick={handleLike}
           className={
             liked
-              ? "text-[#287c62]! [&_img]:[filter:brightness(0)_saturate(100%)_invert(36%)_sepia(17%)_saturate(1758%)_hue-rotate(109deg)_brightness(92%)_contrast(85%)]"
-              : ""
+              ? "relative text-[#287c62]! [&_img]:[filter:brightness(0)_saturate(100%)_invert(36%)_sepia(17%)_saturate(1758%)_hue-rotate(109deg)_brightness(92%)_contrast(85%)]"
+              : "relative"
           }
           aria-pressed={liked}
         >
+          {likeBurst && (
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-0 top-1/2 size-7 -translate-x-[23%] -translate-y-1/2 rounded-full border-2 border-[#287c62]/70 motion-safe:animate-ping"
+            />
+          )}
           <Image
             alt=""
             aria-hidden="true"
+            className={
+              likeBurst ? "motion-safe:animate-[bounce_350ms_ease-out]" : ""
+            }
             height={15}
             src={heartIcon}
             width={15}
