@@ -22,7 +22,7 @@ export function BottomNavigation({
 }) {
   return (
     <nav
-      className="fixed bottom-0 left-1/2 z-3 flex h-[72px] w-full max-w-[428px] -translate-x-1/2 justify-around border-t border-[#ddd] bg-white min-[600px]:shadow-[0_-2px_12px_#00000009] min-[900px]:hidden [&>button]:relative [&>button]:grid [&>button]:min-w-[52px] [&>button]:content-center [&>button]:justify-items-center [&>button]:gap-[3px] [&>button]:bg-transparent [&>button]:text-[9px] [&_img]:size-5 [&_img]:object-contain [&_em]:absolute [&_em]:top-[41px] [&_em]:-right-px [&_em]:rounded [&_em]:bg-[#dcf0b6] [&_em]:px-[3px] [&_em]:py-px [&_em]:text-[8px] [&_em]:text-[#6e9c42] [&_em]:not-italic"
+      className="fixed bottom-0 left-1/2 z-3 flex h-[72px] w-full max-w-[428px] -translate-x-1/2 justify-around border-t border-[#ddd] bg-white min-[600px]:shadow-[0_-2px_12px_#00000009] min-[900px]:hidden [&>button]:relative [&>button]:grid [&>button]:min-w-[52px] [&>button]:content-center [&>button]:justify-items-center [&>button]:gap-[3px] [&>button]:bg-transparent [&>button]:text-[9px] [&_img]:size-5 [&_img]:object-contain"
       aria-label="Primary navigation"
     >
       {navigationItems.map(({ icon, label }) => (
@@ -36,8 +36,14 @@ export function BottomNavigation({
           key={label}
         >
           <Image alt="" aria-hidden="true" height={20} src={icon} width={20} />
-          <span>{label}</span>
-          {label === "Feed" && <em>Beta</em>}
+          <span className="inline-flex items-center gap-1">
+            {label}
+            {label === "Feed" && (
+              <em className="rounded bg-[#dcf0b6] px-[3px] py-px text-[8px] font-normal leading-none text-[#6e9c42] not-italic">
+                Beta
+              </em>
+            )}
+          </span>
         </button>
       ))}
     </nav>
